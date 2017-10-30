@@ -24,7 +24,10 @@ app.get("/", (req, res) => {
       }
 
     }, () => {
-      res.redirect("./");
+      res.writeHead(303, {
+        Location: req.headers.referer
+      });
+      res.end();
     },
     true
   );
