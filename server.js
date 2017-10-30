@@ -10,11 +10,10 @@ console.log("Le programme est lancé ! " + new Date());
 app.get("/", (req, res) => {
 
   res.write('<h1>Progamme LaPauseHetic !</h1>' + '\n<h2>Le programme est lancé ! ' + new Date() + '</h2>');
-  console.log(req.originalUrl);
 
   new CronJob('*/5 * * * *', () => {
 
-      if ((new Date().getHours() > "10") && (new Date().getMinutes() > "30")) {
+      if ((new Date().getHours().toString() > "10") && (new Date().getMinutes().toString() > "30")) {
         console.log("Il est 10 h 30 passé ? C'est déjà l'heure de la pause !");
         console.log("Il est : " + new Date());
         res.write('<p>Il est 10 h 30 passé ? C\'est déjà l\'heure de la pause !</p>' + '<br>' + '<p>Il est : ' + new Date() + '</p>');
