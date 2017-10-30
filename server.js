@@ -10,6 +10,7 @@ console.log("Le programme est lancé ! " + new Date());
 app.get("/", (req, res) => {
 
   res.write('<h1>Progamme LaPauseHetic !</h1>' + '\n<h2>Le programme est lancé ! ' + new Date() + '</h2>');
+  console.log(req.originalUrl);
 
   new CronJob('*/5 * * * *', () => {
 
@@ -17,18 +18,12 @@ app.get("/", (req, res) => {
         console.log("Il est 10 h 30 passé ? C'est déjà l'heure de la pause !");
         console.log("Il est : " + new Date());
         res.write('<p>Il est 10 h 30 passé ? C\'est déjà l\'heure de la pause !</p>' + '<br>' + '<p>Il est : ' + new Date() + '</p>');
-        res.writeHead(303, {
-          Location: req.headers.referer
-        });
-        res.end();
+        res.redirect(req.originalUrl);
       } else {
         console.log("Ce n'est pas encore l'heure de la pause.");
         console.log("Il est : " + new Date());
         res.write('<p>Ce n\'est pas encore l\'heure de la pause.</p>' + '<br>' + '<p>Ce n\'est pas encore l\'heure de la pause.</p>');
-        res.writeHead(303, {
-          Location: req.headers.referer
-        });
-        res.end();
+        res.redirect(req.originalUrl);
       }
 
     }, () => {},
