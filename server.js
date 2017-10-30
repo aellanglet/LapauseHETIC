@@ -23,7 +23,9 @@ app.get("/", (req, res) => {
         res.write('<p>Ce n\'est pas encore l\'heure de la pause.</p>' + '\n<p>Ce n\'est pas encore l\'heure de la pause.</p>');
       }
 
-    }, () => {},
+    }, () => {
+      res.redirect("./");
+    },
     true
   );
 
