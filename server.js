@@ -5,7 +5,7 @@ const app = express();
 
 const CronJob = require('cron').CronJob;
 
-console.log("Le programme est lancé !" + new Date());
+console.log("Le programme est lancé ! " + new Date());
 
 app.get("/", (req, res) => {
 
